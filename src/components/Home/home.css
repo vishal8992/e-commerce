@@ -1,0 +1,51 @@
+.parallax {
+    background-image: url("../../img/par1.jpg");
+    min-height:500px;
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+  
+  .parallax2 {
+    background-image: url("../../img/par2.jpg");
+    min-height:500px;
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+  
+  .parallax3 {
+    background-image: url("../../img/par3.jpg");
+    min-height:500px;
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+   
+  .abc1 {
+    color: #777;
+    background-color:white;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+  }
+  
+  .abc2 {
+    text-align:center;
+  }
+  
+  .abc3 {
+    color: #777;
+    background-color:white;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+  }
+  
+  .abc4 {
+    text-align:center; 
+    font-size: 50px
+  }
