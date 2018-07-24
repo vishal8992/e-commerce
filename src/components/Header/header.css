@@ -65,20 +65,20 @@
 
 .lgnPophdr {
   margin: 25px 0 0 0;
-  color: #28a745;
+  color: #000;
 }
 .dlgLogin{
   margin-top: 30%;
 }
 
 .emalinp {
-  border: 1px solid #28a745;
-  color: #00c5ff;
+  border: 1px solid #00c5ff;
+  color: #000;
 }
 
 .btn {
-  background-color: transparent !important;
-  color: #28a745 !important;
+  background-color: #00c5ff !important;
   margin-top: 20px !important;
-  float:none !important;
+  float: none !important;
+  border-color: #00c5ff !important;
 }
