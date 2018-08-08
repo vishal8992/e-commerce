@@ -1,0 +1,38 @@
+.itemPrnt {
+    margin-top: 150px;
+    position: fixed;
+    font-family: -webkit-body;
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.itemList {
+    list-style-type: none;
+    border: 1px solid #00c5ff;
+    /* padding: 0 10px 0 10px; */
+    width: 97%;
+    margin-top: 10px;
+}
+
+.itemListImg {
+    height: 65px;
+}
+
+.itemList-km {
+    width:16%!important;
+    margin-left: 15%;
+    font-size: 20px;
+}
+
+.prdtDtl {
+    background: #00c5ff !important;
+    color:#fff  !important;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    float: right;
+    margin-top: 15px;
+    margin-right: 20px;
+}
