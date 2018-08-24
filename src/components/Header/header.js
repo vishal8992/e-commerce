@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../../img/app-logo.png';
+import logo from '../../img/app-logo_best.png';
 import './header.css';
 
 class Header extends Component {
@@ -27,8 +27,19 @@ class Header extends Component {
   }
 
   loginSubmit(event) {
-    alert(JSON.stringify(this.state.Login))
-    event.preventDefault();
+    fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: 'vishal',
+                password: '1234',
+            })
+        }).then(function(Response) {
+             alert('Success '+Response)
+        }).then(function(Response) {
+            alert('Err '+Response);
+        })
+    //alert(JSON.stringify(this.state.Login))
+    //event.preventDefault();
   }
   /* Event Handler*/
   

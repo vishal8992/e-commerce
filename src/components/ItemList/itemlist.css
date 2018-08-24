@@ -17,12 +17,14 @@
 
 .itemListImg {
     height: 65px;
+    width: 9%;
 }
 
 .itemList-km {
-    width:16%!important;
-    margin-left: 15%;
+    width: 20%!important;
+    text-align: center;
     font-size: 20px;
+    display: inline-block;
 }
 
 .prdtDtl {
@@ -36,3 +38,37 @@
     margin-top: 15px;
     margin-right: 20px;
 }
+
+
+
+.clsbtn {
+    margin-top: -70px;
+    font-size: 30px;
+}
+
+.prodctItemPophdr {
+    margin: 25px 0 0 0;
+    color: #00c5ff;
+    font-size: 2em;
+  }
+
+  .itemMdlHdr {
+      text-align: center;
+  }
+
+  .prcItem {
+    width: 70%;
+    float: right;
+    font-size: 20px;
+  }
+
+  .prodPopMain {
+    width: 200%;
+    margin-left: -50%;
+    margin-top: 20%;
+  }
+
+  .itemDetailImg {
+    height: 275px;
+    width: 28%;
+  }
