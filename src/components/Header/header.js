@@ -26,6 +26,18 @@ class Header extends Component {
     
   }
 
+    // componentWillMount() {
+    //     fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             username: 'vishal',
+    //             password: '1234',
+    //         })
+    //     }).then(function(Response) {
+    //         console.log('Success '+JSON.stringify(Response))
+    //     })
+    // }
+    
   loginSubmit(event) {
     fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
             method: 'POST',
@@ -34,12 +46,9 @@ class Header extends Component {
                 password: '1234',
             })
         }).then(function(Response) {
-             alert('Success '+Response)
-        }).then(function(Response) {
-            alert('Err '+Response);
+            console.log('Success '+JSON.stringify(Response))
         })
-    //alert(JSON.stringify(this.state.Login))
-    //event.preventDefault();
+    /*alert(JSON.stringify(this.state.Login))*/
   }
   /* Event Handler*/
   
@@ -64,6 +73,7 @@ class Header extends Component {
             <div className="authSec">
                 <span className="loginLbl" data-toggle="modal" data-target="#myModal"><u>Login</u></span>
             </div>
+
             </header>
         
             <div className="container">
@@ -75,18 +85,15 @@ class Header extends Component {
                                 <button type="button" className="close clsbtn" data-dismiss="modal">&times;</button>
                             </div>
                             <div className="modal-body">
-                                <form onSubmit={this.loginSubmit}>
-                                    <div className="form-group lgnpopAlgn">
-                                    <input type="text" value={this.state.Login.email} onChange={this.loginEmailChange} placeholder="Email Address" className="form-control emalinp" id="usr"/>
-                                    </div>
-                                    <div className="form-group lgnpopAlgn">
-                                    <input type="password" value={this.state.Login.paswrd} onChange={this.loginPassChange} placeholder="Password" className="form-control emalinp" id="pwd"/>
-                                    </div>
-                                    <div className="lgnBtn">
-                                        <button type="submit" className="btn btn-outline-success lgnBtnMn">Success</button>
-                                    </div>
-                                
-                                </form>
+                                <div className="form-group lgnpopAlgn">
+                                <input type="text" value={this.state.Login.email} onChange={this.loginEmailChange} placeholder="Email Address" className="form-control emalinp" id="usr"/>
+                                </div>
+                                <div className="form-group lgnpopAlgn">
+                                <input type="password" value={this.state.Login.paswrd} onChange={this.loginPassChange} placeholder="Password" className="form-control emalinp" id="pwd"/>
+                                </div>
+                                <div className="lgnBtn">
+                                    <button className="btn btn-outline-success lgnBtnMn" onClick={this.loginSubmit}>Success</button>
+                                </div>
                             </div>
                         </div>
                     </div>
