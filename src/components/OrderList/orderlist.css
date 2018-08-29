@@ -95,3 +95,10 @@
       box-shadow:none;
       outline: 0 none;
   }
+
+  .lftAlgData {
+    font-size:22px;
+    padding:20px 0 20px 40px;
+    width:48%;
+    display:inline-block;
+  }

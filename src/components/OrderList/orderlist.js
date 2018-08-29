@@ -11,37 +11,23 @@ class OrderList extends Component {
     constructor(props) {
         super(props);
         this.state =  {data:[
-            {"userImg":userProfile1,"userName":"TM","orderCost":"2000","Location":"Noida","paymentType":"COD","orderId":"001","Address":"","orderStatus":"In Progress","itemList":[
-                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemPkt":"200","itemId":"001"},
-                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemPkt":"450","itemId":"002"},
-                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemPkt":"250","itemId":"003"},
+            {"userImg":userProfile1,"userName":"TM","orderCost":"2000","Location":"Noida","paymentType":"COD","orderId":"001","orderDate":"20/08/2018","exptDate":"23/08/2018","Address":"Sec-62, Noida, U.P.","orderStatus":"In Progress","itemList":[
+                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"26","itemOrder":"2","itemId":"001"},
+                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemOrder":"1","itemId":"002"},
+                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemOrder":"1","itemId":"003"},
             ]},
-            {"userImg":userProfile1,"userName":"AS","orderCost":"1050","Location":"Delhi","paymentType":"Debit Card","orderId":"002","Address":"","orderStatus":"In Progress","itemList":[
-                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemPkt":"200","itemId":"001"},
-                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemPkt":"450","itemId":"002"},
-                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemPkt":"250","itemId":"003"},
+            {"userImg":userProfile1,"userName":"AS","orderCost":"1050","Location":"Delhi","paymentType":"Debit Card","orderId":"002","orderDate":"25/08/2018","exptDate":"28/08/2018","Address":"Uttam Nagar, Delhi, 110055","orderStatus":"In Progress","itemList":[
+                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemOrder":"3","itemId":"001"},
+                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemOrder":"2","itemId":"002"},
+                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemOrder":"4","itemId":"003"},
             ]},
-            {"userImg":userProfile1,"userName":"KM","orderCost":"3750","Location":"Gurugram","paymentType":"Credit Card","orderId":"003","Address":"","orderStatus":"Delivered","itemList":[
-                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemPkt":"200","itemId":"001"},
-                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemPkt":"450","itemId":"002"},
-                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemPkt":"250","itemId":"003"},
+            {"userImg":userProfile1,"userName":"KM","orderCost":"3750","Location":"Gurugram","paymentType":"Credit Card","orderId":"003","orderDate":"28/08/2018","exptDate":"01/09/2018","Address":"K-2, Paramount Apartment, Sohna Road, Gurugram, Haryana","orderStatus":"Delivered","itemList":[
+                {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemOrder":"1","itemId":"001"},
+                {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemOrder":"3","itemId":"002"},
+                {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemOrder":"1","itemId":"003"},
             ]},
-        ],"orderDetailData":{"userImg":userProfile1,"userName":"","orderCost":"","Location":"","paymentType":"","orderId":"","Address":"","orderStatus":"","itemList":[]},"oderList":true,"orderAccord":true}; 
+        ],"orderDetailData":{"userImg":userProfile1,"userName":"","orderCost":"","Location":"","paymentType":"","orderId":"","orderDate":"","exptDate":"","Address":"","orderStatus":"","itemList":[]},"oderList":true,"orderAccord":true}; 
     }
-
-    // componentDidMount() {
-    //     fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             username: 'vishal',
-    //             password: '1234',
-    //         })
-    //     }).then((Response) => Response.json()).then((findresponse) => {
-    //         this.setState({
-    //             movies: findresponse.movies,
-    //         })
-    //     })
-    // }
 
     orderDetail(orderDetails) {
         let orderDetailData = this.state.orderDetailData;
@@ -57,17 +43,7 @@ class OrderList extends Component {
             this.state.orderAccord = true;
         }
     }
-
-    // window.onhashchange = function() {
-    // if (window.innerDocClick) {
-    //     alert(676)
-    //     //Your own in-page mechanism triggered the hash change
-    // } else {
-    //     alert(9789)
-    //     //Browser back button was clicked
-    // }
-//}
-
+    
    render() {
        if(this.state.oderList) {
         return (
@@ -93,13 +69,18 @@ class OrderList extends Component {
        } else {
         return (
             <div>
-                <div className="itemPrnt" style={{border:'1px solid #00c5ff',width:90+'%',marginLeft:5+'%'}}>
+                <div className="itemPrnt" style={{border:'1px solid #00c5ff',width:90+'%',marginLeft:5+'%',height:475}}>
                 {this.state.orderAccord}
                     <h1 style={{textAlign:'center'}}>{this.state.orderDetailData.userName}</h1>
-                    <span style={{color:'#00c5ff',fontSize:22,padding:40}}>Order Id: {this.state.orderDetailData.orderId}</span>
-                    {/* accordian 1 start */}
+                    <div className="lftAlgData">
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Order Id: </span><span>{this.state.orderDetailData.orderId}</span>
+                    </div>
+                    <div className="lftAlgData" style={{textAlign: 'right'}}>
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Order Data: </span><span>{this.state.orderDetailData.orderDate}</span>
+                    </div>
+                    {/* Item List Data */}
                     <p style={{marginLeft:3+'%',marginBottom: 10}} onClick={()=>this.orderAccrdData()}>
-                        <a style={{width:97+'%',textAlign:'left'}} class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <a style={{width:97+'%',textAlign:'left',fontSize:19}} class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Order Item List
                             <img src={this.state.orderAccord ? downIcon : upIcon} className="userListImg" style={{height: 30,width:3+'%',float:'right'}} alt="logo" />
                         </a>
@@ -112,12 +93,28 @@ class OrderList extends Component {
                                     <img src={item.itemImg} className="orderItemListImg" alt="logo" />
                                     <span className="orderitemList-km">{item.itemName}</span>
                                     <span className="orderitemList-km">{item.itemquantity}</span>
-                                    <span className="orderitemList-km">{item.itemPkt}</span>
+                                    <span className="orderitemList-km">{item.itemOrder}</span>
                                     <span className="orderitemList-km">{item.price}</span>
                                     </li>
                                 ))    
                             }</ul>
                         </div>
+                    </div>
+                    {/* Item List Data Finish */}
+                    <div className="lftAlgData">
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Address: </span><span>{this.state.orderDetailData.Address}</span>
+                    </div>
+                    <div className="lftAlgData" style={{textAlign: 'right'}}>
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Expt. Delivery Date: </span><span>{this.state.orderDetailData.exptDate}</span>
+                    </div>
+                    <div className="lftAlgData">
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Total Amont: </span><span>{this.state.orderDetailData.orderCost} Rs.</span>
+                    </div>
+                    <div className="lftAlgData" style={{textAlign: 'right'}}>
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Payment Status: </span><span>{this.state.orderDetailData.paymentType}</span>
+                    </div>
+                    <div className="lftAlgData">
+                        <span style={{color: 'rgb(0, 197, 255)'}}>Order Status: </span><span style={{color:this.state.orderDetailData.orderStatus=='In Progress' ? 'red' : 'green'}}>{this.state.orderDetailData.orderStatus}</span>
                     </div>
                 </div>
              </div>
