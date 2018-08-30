@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Chart, Axis, Series, Tooltip, Cursor, Line } from "react-charts";
 import './dashboard.css';
 import chart1 from '../../img/chart1.jpg';
 import chart2 from '../../img/chart2.png';
@@ -6,23 +7,53 @@ import chart3 from '../../img/chart3.png';
 import chart4 from '../../img/chart4.png';
 
 class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {data:[
+            {
+              label: "Series 1",
+              data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+            },
+            {
+              label: "Series 2",
+              data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+            }
+          ]};
+      }
+
    render() {
       return (
          <div className="dashPrnt">
             <div>
                 <div className="dashColsR">
-                    <img src={chart1} className="dashChartImg" alt="logo" />
+                    <Chart data={this.state.data}>
+                        <Axis primary type="time" />
+                        <Axis type="linear" />
+                        <Series type={Line} />
+                    </Chart>
                 </div>
                 <div className="dashColsL">
-                    <img src={chart2} className="dashChartImg" alt="logo" />
+                    <Chart data={this.state.data}>
+                        <Axis primary type="time" />
+                        <Axis type="linear" />
+                        <Series type={Line} />
+                    </Chart>
                 </div>
             </div>
             <div>
                 <div className="dashColsR">
-                    <img src={chart3} className="dashChartImg" alt="logo" />
+                    <Chart data={this.state.data}>
+                        <Axis primary type="time" />
+                        <Axis type="linear" />
+                        <Series type={Line} />
+                    </Chart>
                 </div>
                 <div className="dashColsL">
-                    <img src={chart4} className="dashChartImg" alt="logo" />
+                    <Chart data={this.state.data}>
+                        <Axis primary type="time" />
+                        <Axis type="linear" />
+                        <Series type={Line} />
+                    </Chart>
                 </div>
             </div>
          </div>
