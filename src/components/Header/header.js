@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 import firebase from "firebase";
 import logo from '../../img/app-logo_best.png';
 import './header.css';
+import dbRefObject from '../../commonServices';
 
-const config = {
-    apiKey: "AIzaSyCYY0FUpbQztDoun-0G7OezDisGQlwy4hg",
-    authDomain: "ecommerce-2d5d3.firebaseapp.com",
-    databaseURL: "https://ecommerce-2d5d3.firebaseio.com",
-    projectId: "ecommerce-2d5d3",
-    storageBucket: "ecommerce-2d5d3.appspot.com",
-    messagingSenderId: "273332995376"
-};
-firebase.initializeApp(config);
+// const config = {
+//     apiKey: "AIzaSyCYY0FUpbQztDoun-0G7OezDisGQlwy4hg",
+//     authDomain: "ecommerce-2d5d3.firebaseapp.com",
+//     databaseURL: "https://ecommerce-2d5d3.firebaseio.com",
+//     projectId: "ecommerce-2d5d3",
+//     storageBucket: "ecommerce-2d5d3.appspot.com",
+//     messagingSenderId: "273332995376"
+// };
+// firebase.initializeApp(config);
 
-const dbRefObject = firebase.database().ref().child('items')
-console.log('dbRefObject:    '+dbRefObject)
-dbRefObject.on("value", function(obj) {
-    console.log('success result :'+JSON.stringify(obj));
-});
+// const dbRefObject = firebase.database().ref().child('items')
 
+// console.log('header: '+dbRefObject+'itemList')
+// const apiUrl = dbRefObject+'itemList';
 
 class Header extends Component {
   constructor(props) {
@@ -57,15 +56,15 @@ class Header extends Component {
     // }
     
   loginSubmit(event) {
-    fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
-            method: 'POST',
-            body: JSON.stringify({
-                username: 'vishal',
-                password: '1234',
-            })
-        }).then(function(Response) {
-            console.log('Success '+JSON.stringify(Response))
-        })
+    // fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         username: 'vishal',
+    //         password: '1234',
+    //     })
+    // }).then(function(Response) {
+    //     console.log('Success '+JSON.stringify(Response))
+    // })
   }
   
   loginEmailChange(event) {

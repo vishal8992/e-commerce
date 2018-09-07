@@ -3,16 +3,25 @@ import './itemlist.css';
 import item1 from '../../img/milk.jpg';
 import item2 from '../../img/atta.png';
 import item3 from '../../img/sugar.jpg';
-
+import dbRefObject from '../../commonServices';
 
 class ItemList extends Component {
     constructor(props) {
         super(props);
-        this.state =  {data:[
-            {"itemImg":item1,"itemName":"Amul Milk","itemquantity":"1/2 Kg","price":"52","itemPkt":"200","itemId":"001","itemDesp":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
-            {"itemImg":item2,"itemName":"Atta","itemquantity":"10 Kg","price":"280","itemPkt":"450","itemId":"002","itemDesp":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
-            {"itemImg":item3,"itemName":"Sugar","itemquantity":"5 Kg","price":"150","itemPkt":"250","itemId":"003","itemDesp":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
-        ],"productData":{"itemImg":item1,"itemName":"","itemquantity":"","price":"","itemPkt":"","itemId":"","itemDesp":""}}; 
+        this.state =  {data:[],"productData":{"itemImg":item1,"itemName":"","itemquantity":"","price":"","itemPkt":"","itemId":"","itemDesp":""}}; 
+    }
+
+    componentWillMount(){
+        dbRefObject.child('itemList').on("value", function(obj) {
+            const ObjArr = [];
+            obj.forEach(function(ind){
+                var abc = JSON.stringify(ind);
+                abc = JSON.parse(abc);
+                ObjArr.push(abc)
+            })
+            this.setState({data:ObjArr});
+            console.log('State result :'+JSON.stringify(this.state));
+        }.bind(this));
     }
 
     productDetail(productDetails) {
@@ -28,11 +37,11 @@ class ItemList extends Component {
                 <ul>{
                         this.state.data.map((item) => (
                             <li class="itemList">
-                            <img src={item.itemImg} className="itemListImg" alt="logo" />
+                            <img src={'data:image/png;base64,'+item.itemImg} className="itemListImg" alt="logo" />
                             <span className="itemList-km">{item.itemName}</span>
                             <span className="itemList-km">{item.itemquantity}</span>
-                            <span className="itemList-km">{item.itemPkt}</span>
-                            <span className="itemList-km">{item.price}</span>
+                            <span className="itemList-km">{item.price} Rs.</span>
+                            <span className="itemList-km">{item.itemPkt} In Stock</span>
                             <a data-toggle="modal" data-target="#itemModal" href="#" className="prdtDtl" onClick={()=>this.productDetail(item)}>Product Detail</a>
                             </li>
                         ))    
@@ -48,7 +57,7 @@ class ItemList extends Component {
                             <button style={{marginTop:-80}} type="button" className="close clsbtn" data-dismiss="modal">&times;</button>
                             </div>
                             <div className="modal-body">
-                                <img src={this.state.productData.itemImg} className="itemDetailImg" alt="logo" />
+                                <img src={'data:image/png;base64,'+this.state.productData.itemImg} className="itemDetailImg" alt="logo" />
                                 <div className="prcItem">
                                     <span>Price: {this.state.productData.price}</span>
                                     <span style={{marginLeft:100}}>Quantity: {this.state.productData.itemquantity}</span>
