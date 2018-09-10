@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
-import firebase from "firebase";
 import logo from '../../img/app-logo_best.png';
 import './header.css';
 import dbRefObject from '../../commonServices';
-
-// const config = {
-//     apiKey: "AIzaSyCYY0FUpbQztDoun-0G7OezDisGQlwy4hg",
-//     authDomain: "ecommerce-2d5d3.firebaseapp.com",
-//     databaseURL: "https://ecommerce-2d5d3.firebaseio.com",
-//     projectId: "ecommerce-2d5d3",
-//     storageBucket: "ecommerce-2d5d3.appspot.com",
-//     messagingSenderId: "273332995376"
-// };
-// firebase.initializeApp(config);
-
-// const dbRefObject = firebase.database().ref().child('items')
-
-// console.log('header: '+dbRefObject+'itemList')
-// const apiUrl = dbRefObject+'itemList';
+import * as firebase from "firebase";
 
 class Header extends Component {
   constructor(props) {
@@ -43,28 +28,20 @@ class Header extends Component {
     
   }
 
-    // componentWillMount() {
-    //     fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             username: 'vishal',
-    //             password: '1234',
-    //         })
-    //     }).then(function(Response) {
-    //         console.log('Success '+JSON.stringify(Response))
-    //     })
-    // }
-    
   loginSubmit(event) {
-    // fetch('http://192.168.38.47:8080/AuthenticationWS/rest/AuthenticateService/User', {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //         username: 'vishal',
-    //         password: '1234',
-    //     })
-    // }).then(function(Response) {
-    //     console.log('Success '+JSON.stringify(Response))
-    // })
+    firebase.auth().signInWithEmailAndPassword(this.state.Login.email,this.state.Login.paswrd).then(function(succ){
+        if(succ.user.uid!=''){
+            alert('You are successfully login');
+        }
+    }).catch(function(error) {
+        if(error.code=='auth/user-not-found'){
+            alert('User does not exist.');
+        } else if(error.code=='auth/wrong-password') {
+            alert('Password is incorrect.');
+        } else if(error.code=='auth/invalid-email') {
+            alert('Please enter valid email.');
+        } 
+    });
   }
   
   loginEmailChange(event) {
@@ -83,14 +60,12 @@ class Header extends Component {
     return (
         <div>
             <header className="hdr-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <div className="hdr-title">{this.state.header}</div>
-            <div className="authSec">
-                <span className="loginLbl" data-toggle="modal" data-target="#myModal"><u>Login</u></span>
-            </div>
-
+                <img src={logo} className="App-logo" alt="logo" />
+                <div className="hdr-title">{this.state.header}</div>
+                <div className="authSec">
+                    <span className="loginLbl" data-toggle="modal" data-target="#myModal"><u>Login</u></span>
+                </div>
             </header>
-        
             <div className="container">
                 <div className="modal fade" id="myModal" role="dialog">
                     <div className="modal-dialog">

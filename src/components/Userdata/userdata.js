@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import './userdata.css';
 import userProfile1 from '../../img/defaultUserIcon.png';
+import dbRefObject from '../../commonServices';
 
 class Userdata extends Component {
     constructor(props) {
         super(props);
-        this.state =  {data:[
-            {"userImg":userProfile1,"firstName":"Vishal","lastName":"Jain","mobile":"9716682259","email":"vishal.jain@newgen.co.in","UserType":"Premium","Address":"Delhi","userId":"001","joinDat":"20/08/2018","totalShopingCost":"52575"},
-            {"userImg":userProfile1,"firstName":"Akshay","lastName":"Bansal","mobile":"9877854655","email":"akshay.bansal@newgen.co.in","UserType":"Non Premium","Address":"Noida","userId":"001","joinDat":"20/08/2018","totalShopingCost":"1145"},
-            {"userImg":userProfile1,"firstName":"Ankit","lastName":"Mittal","mobile":"9467567675","email":"ankit.mittal@newgen.co.in","UserType":"Non Premium","Address":"Panjab","userId":"001","joinDat":"20/08/2018","totalShopingCost":"2252"},
-        ],"userDetailsData":""}
+        this.state =  {data:[],"userDetailsData":""}
+    }
+
+    componentWillMount(){
+        dbRefObject.child('userList').on("value", function(obj) {
+            const ObjArr = [];
+            obj.forEach(function(ind){
+                var abc = JSON.stringify(ind);
+                abc = JSON.parse(abc);
+                ObjArr.push(abc)
+            })
+            this.setState({data:ObjArr});
+            console.log('State result :'+JSON.stringify(this.state));
+        }.bind(this));
     }
   
     userDetail(userData) {
@@ -24,7 +34,7 @@ class Userdata extends Component {
                 <div className="itemPrnt">
                     <ul>{this.state.data.map((user) => (
                         <li class="itemList">
-                            <img src={user.userImg} className="userListImg" alt="logo" />
+                            <img src={'data:image/png;base64,'+user.userImg} className="userListImg" alt="logo" />
                             <span className="itemList-order">{user.firstName+' '+user.lastName}</span>
                             <span className="itemList-order">{user.mobile}</span>
                             <span className="itemList-order">{user.Address}</span>
@@ -45,7 +55,7 @@ class Userdata extends Component {
                                 <button style={{marginTop:-80}} type="button" className="close clsbtn" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div className="modal-body">
-                                    <img src={this.state.userDetailsData.userImg} className="itemDetailImg" alt="logo" />
+                                    <img src={'data:image/png;base64,'+this.state.userDetailsData.userImg} className="itemDetailImg" alt="logo" />
                                     <div className="prcItem">
                                         <span>Mobile: {this.state.userDetailsData.mobile}</span>
                                         <span style={{float:'right',marginRight:50}}>Email: {this.state.userDetailsData.email}</span>

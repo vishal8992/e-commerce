@@ -1,0 +1,64 @@
+.authSec {
+    display: inline-block;
+}
+
+.loginLbl {
+      float:left;
+      font-size: 18px;
+      cursor: pointer;
+}
+
+.registerLbl {
+    float:right;
+    cursor: pointer;
+}
+
+.lognMdl {
+    text-align: center;
+}
+
+.clsbtn {
+    margin-top: -70px;
+    font-size: 30px;
+}
+
+.lgnBtn {
+  text-align: center;
+}
+
+.lgnBtnMn {
+  width: 40%;
+}
+
+.lgnBxAlgn {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 25px;
+}
+
+.lgnPophdr {
+  margin: 25px 0 0 0;
+  color: #000;
+}
+.dlgLogin{
+  margin-top: 30%;
+}
+
+.emalinp {
+  border: 1px solid #00c5ff;
+  color: #000;
+}
+
+.btn {
+  background-color: #00c5ff !important;
+  margin-top: 20px !important;
+  float: none !important;
+  border-color: #00c5ff !important;
+}
+
+.loginBx {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 250px !important;
+    margin-left: 35%;
+    width: 30% !important;
+}

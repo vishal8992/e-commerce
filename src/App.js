@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header/header';
-//import Home from './components/Home/home';
-//import Userdata from './components/Userdata/userdata';
+import Login from './components/Login/login';
 import Subheader from './components/Subheader/subheader';
 import './App.css';
 
@@ -10,19 +9,28 @@ class App extends Component {
     super(props);
     this.state = {
       header: "Welcome to Delhi",
-      content: "Content from state..."
+      content: "Content from state...",
+      loginUser:false
     }
   }
 
   render() {
-    return (
-      <div className="App">
-        <Header />
-        <Subheader />
-        {/* <Userdata /> */}
-        {/* <Home /> */}
-      </div>
-    );
+      if(this.state.loginUser) {
+        return(
+          <div className="App">
+            <Header />
+            <Subheader />
+          </div>
+        );  
+      } else {
+        return(
+          <div className="App">
+            <Header />
+            <Login />
+          </div>
+        );
+      }
+      
   }
 }
 export default App;

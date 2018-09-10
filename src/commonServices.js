@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import * as firebase from "firebase";
 
 const config = {
     apiKey: "AIzaSyCYY0FUpbQztDoun-0G7OezDisGQlwy4hg",
@@ -8,6 +8,7 @@ const config = {
     storageBucket: "ecommerce-2d5d3.appspot.com",
     messagingSenderId: "273332995376"
 };
+
 firebase.initializeApp(config);
 const dbRefObject = firebase.database().ref()
 console.log('common service: '+dbRefObject)
