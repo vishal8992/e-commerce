@@ -6,7 +6,7 @@ import item2 from '../../img/atta.png';
 import item3 from '../../img/sugar.jpg';
 import downIcon from '../../img/downArrow.png';
 import upIcon from '../../img/upArrow.png';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
 
 class OrderList extends Component {
     constructor(props) {

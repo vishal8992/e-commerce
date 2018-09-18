@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../img/app-logo_best.png';
 import './header.css';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
 import * as firebase from "firebase";
 
 class Header extends Component {

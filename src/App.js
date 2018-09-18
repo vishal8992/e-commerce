@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Header from './components/Header/header';
 import Login from './components/Login/login';
 import Subheader from './components/Subheader/subheader';
+import commonObj from './commonServices';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class App extends Component {
     this.state = {
       header: "Welcome to Delhi",
       content: "Content from state...",
-      loginUser:false
+      loginUser:commonObj.loginUser
     }
   }
 

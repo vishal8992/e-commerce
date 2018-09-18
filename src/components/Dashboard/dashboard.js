@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Chart, Axis, Series, Tooltip, Cursor, Line } from "react-charts";
 import './dashboard.css';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
 
 class Dashboard extends Component {
     constructor(props) {

@@ -3,7 +3,7 @@ import './itemlist.css';
 import item1 from '../../img/milk.jpg';
 import item2 from '../../img/atta.png';
 import item3 from '../../img/sugar.jpg';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
 
 class ItemList extends Component {
     constructor(props) {

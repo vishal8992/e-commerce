@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './userdata.css';
 import userProfile1 from '../../img/defaultUserIcon.png';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
 
 class Userdata extends Component {
     constructor(props) {

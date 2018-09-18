@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './login.css';
-import dbRefObject from '../../commonServices';
+import dbRefObject from '../../databaseDB';
+import commonObj from '../../commonServices';
 import * as firebase from "firebase";
 
 class Login extends Component {
@@ -10,20 +11,23 @@ class Login extends Component {
     this.loginSubmit = this.loginSubmit.bind(this);
     this.loginEmailChange = this.loginEmailChange.bind(this);
     this.loginPassChange = this.loginPassChange.bind(this);
-    
   }
 
   loginSubmit(event) {
     firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.paswrd).then(function(succ){
         if(succ.user.uid!=''){
             alert('You are successfully login');
+            commonObj.loginUser = true;
         }
     }).catch(function(error) {
         if(error.code=='auth/user-not-found'){
             alert('User does not exist.');
+            commonObj.loginUser = false;
         } else if(error.code=='auth/wrong-password') {
+            commonObj.loginUser = false;
             alert('Password is incorrect.');
         } else if(error.code=='auth/invalid-email') {
+            commonObj.loginUser = false;
             alert('Please enter a valid email.');
         } 
     });
