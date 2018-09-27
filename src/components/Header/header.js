@@ -11,49 +11,10 @@ class Header extends Component {
       header: "Admin Portal",
       Login:{
         email:"",
-        paswrd:""
+        paswrd:"",
+        askLogout:"Are you sure you want to logout?"
       },
-      Register: {
-          fullname:"",
-          email:"",
-          M_No:"",
-          Add:"",
-          Password:"",
-          Conf_Password:""
-      }
-    }
-    this.loginSubmit = this.loginSubmit.bind(this);
-    this.loginEmailChange = this.loginEmailChange.bind(this);
-    this.loginPassChange = this.loginPassChange.bind(this);
-    
-  }
-
-  loginSubmit(event) {
-    firebase.auth().signInWithEmailAndPassword(this.state.Login.email,this.state.Login.paswrd).then(function(succ){
-        if(succ.user.uid!=''){
-            alert('You are successfully login');
-        }
-    }).catch(function(error) {
-        if(error.code=='auth/user-not-found'){
-            alert('User does not exist.');
-        } else if(error.code=='auth/wrong-password') {
-            alert('Password is incorrect.');
-        } else if(error.code=='auth/invalid-email') {
-            alert('Please enter valid email.');
-        } 
-    });
-  }
-  
-  loginEmailChange(event) {
-    let login = this.state.Login;
-    login.email = event.target.value;
-    this.setState({Login:login});
-  }
-
-  loginPassChange(event) {
-    let login = this.state.Login;
-    login.paswrd = event.target.value;
-    this.setState({Login:login});
+    }    
   }
 
   render() {
@@ -63,10 +24,10 @@ class Header extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <div className="hdr-title">{this.state.header}</div>
                 <div className="authSec">
-                    <span className="loginLbl" data-toggle="modal" data-target="#myModal"><u>Login</u></span>
+                    <span className="loginLbl" data-toggle="modal" data-target="#myModal"><u>{this.props.name}</u></span>
                 </div>
             </header>
-            <div className="container">
+            {/* <div className="container">
                 <div className="modal fade" id="myModal" role="dialog">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -88,7 +49,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
   }

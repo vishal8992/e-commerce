@@ -7,14 +7,33 @@ import item3 from '../../img/sugar.jpg';
 import downIcon from '../../img/downArrow.png';
 import upIcon from '../../img/upArrow.png';
 import dbRefObject from '../../databaseDB';
+import Loader from 'react-loader-spinner'
 
 class OrderList extends Component {
     constructor(props) {
         super(props);
-        this.state =  {data:[],"orderDetailData":{"userImg":userProfile1,"userName":"","orderCost":"","Location":"","paymentType":"","orderId":"","orderDate":"","exptDate":"","Address":"","orderStatus":"","itemList":[]},"oderList":true,"orderAccord":true}; 
+        this.state =  {data:[],
+            "orderDetailData":{
+                "userImg":userProfile1,
+                "userName":"",
+                "orderCost":"",
+                "Location":"",
+                "paymentType":"",
+                "orderId":"",
+                "orderDate":"",
+                "exptDate":"",
+                "Address":"",
+                "orderStatus":"",
+                "itemList":[]
+            },
+            "oderList":true,
+            "orderAccord":true,
+            spinner:false
+        }; 
     }
 
     componentWillMount(){
+        this.setState({spinner:true});
         dbRefObject.child('orderList').on("value", function(obj) {
             const ObjArr = [];
             obj.forEach(function(ind){
@@ -24,6 +43,7 @@ class OrderList extends Component {
             })
             this.setState({data:ObjArr});
             console.log('State result :'+JSON.stringify(this.state));
+            this.setState({spinner:false});
         }.bind(this));
     }
 
@@ -44,7 +64,7 @@ class OrderList extends Component {
     }
     
    render() {
-       if(this.state.oderList) {
+       if(this.state.oderList && !this.state.spinner) {
         return (
             <div>
                 <div className="itemPrnt">
@@ -65,7 +85,7 @@ class OrderList extends Component {
                 </div>
              </div>
           );
-       } else {
+       } else if(!this.state.oderList && !this.state.spinner){
         return (
             <div>
                 <div className="itemPrnt" style={{border:'1px solid #00c5ff',width:90+'%',marginLeft:5+'%',height:475}}>
@@ -118,6 +138,12 @@ class OrderList extends Component {
                 </div>
              </div>
           ); 
+       } else {
+        return (
+            <div className="loadStl">
+                <Loader type="TailSpin" color="#00BFFF" height="100" width="100"/>  
+            </div>
+        );
        }
    }
 }
