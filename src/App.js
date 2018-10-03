@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './components/Header/header';
-import Subheader from './components/Subheader/subheader';
 import commonObj from './commonServices';
 import './App.css';
 import dbRefObject from './databaseDB';
@@ -55,7 +54,7 @@ class App extends Component {
         return(
           <div className="App">
             <Header name="Logout"/>
-            <Subheader />
+            
           </div>
         );  
       } else if (!this.state.loginUser && !this.state.spinner){
