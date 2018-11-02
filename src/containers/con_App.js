@@ -9,7 +9,11 @@ import App  from '../App'
 // }
 
 function mapStateToProps(state) {
-    return { loginUser: state.loginUser }
+    if(state.loginStatus=='') {
+        state.loginStatus = false;    
+    }
+    return { loginUser: state.loginStatus }
+
 }
 
 export default connect(mapStateToProps)(App)

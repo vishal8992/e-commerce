@@ -25,9 +25,10 @@ class Header extends Component {
     logout(){
         this.setState({spinner:true});
         setTimeout(function(){
-            alert('You have successfully logout.');
-            this.props.name='';
+            //alert('You have successfully logout.');
+            //this.props.name='';
             this.setState({spinner:false});
+            this.props.updateLogout(false);
         }.bind(this),2000)
     }
 

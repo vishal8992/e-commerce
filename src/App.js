@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Header from './components/Header/header';
+//import Header from './components/Header/header';
+import Header from './containers/cont_Header';
 import commonObj from './commonServices';
 import './App.css';
 import dbRefObject from './databaseDB';
 import * as firebase from "firebase";
 import Loader from 'react-loader-spinner'
 import Subheader from './components/Subheader/subheader'
-import Login from './components/Login/login'
+import Login from './containers/cont_login';
 
 class App extends Component {
   constructor(props) {
@@ -14,11 +15,11 @@ class App extends Component {
   }
 
   render() {
-      if(!this.props.loginUser) {
+      if(this.props.loginUser) {
         return(
           <div className="App">
             <Header name="Logout"/>
-            <Subheader />
+            {/* <Subheader /> */}
           </div>
         );  
       } else {

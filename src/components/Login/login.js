@@ -9,8 +9,10 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          email:"vishal.jain@newgen.co.in",
-          paswrd:"12345678",
+          //email:"vishal.jain@newgen.co.in",
+          //paswrd:"12345678",
+          email:"",
+          paswrd:"",
           spinner: false
         }
         this.loginSubmit = this.loginSubmit.bind(this);

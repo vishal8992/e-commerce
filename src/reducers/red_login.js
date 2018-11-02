@@ -1,7 +1,6 @@
-export default function(state=null, action) {
+export default function(state='', action) {
     switch(action.type) {
         case 'loginStatus':
-            //return Object.assign(...state,action.payload);
             return action.loginUser;
     }
     return state

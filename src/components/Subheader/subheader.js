@@ -5,13 +5,14 @@ import Home from '../Home/home';
 import Userdata from '../Userdata/userdata';
 import Dashboard from '../Dashboard/dashboard';
 import OrderList from '../OrderList/orderlist';
-import Portfolio from '../Portfolio/portfolio';
+//import Portfolio from '../Portfolio/portfolio';
+import sellerList from '../SellerList/sellerList';
 import ItemList from '../ItemList/itemlist';
 
 class Subheader extends Component {
   constructor(props) {
       super(props);
-      this.state =  {data:[{"subHdrName":'Dashboard',"IsActive":true},{"subHdrName":'Order List',"IsActive":false},{"subHdrName":'Item List',"IsActive":false},{"subHdrName":'Customer List',"IsActive":false},{"subHdrName":'Portfolio',"IsActive":false}]}; 
+      this.state =  {data:[{"subHdrName":'Dashboard',"IsActive":true},{"subHdrName":'Order List',"IsActive":false},{"subHdrName":'Item List',"IsActive":false},{"subHdrName":'Customer List',"IsActive":false},{"subHdrName":'Seller List',"IsActive":false}]}; 
       this.tabContent = this.tabContent.bind(this);
   }
 
@@ -46,7 +47,7 @@ class Subheader extends Component {
             }
             subHdrData[3].IsActive = true;
             this.setState({data:subHdrData});
-        } else if(objVal==="Portfolio") {
+        } else if(objVal==="Seller List") {
             let subHdrData = this.state.data;
             for(i=0;i<subHdrData.length;i++){
                 subHdrData[i].IsActive = false;
@@ -70,11 +71,11 @@ class Subheader extends Component {
                 </div>
                 <Switch>
                   <Route exact path='/' component={Dashboard} />
-                  <Route exact path='/Customer List' component={Userdata} />
-                  <Route exact path='/Dashboard' component={Dashboard} />
-                  <Route exact path='/Order List' component={OrderList} />
-                  <Route exact path='/Portfolio' component={Portfolio} />
-                  <Route exact path='/Item List' component={ItemList} />
+                  <Route  path='/Customer List' component={Userdata} />
+                  <Route  path='/Dashboard' component={Dashboard} />
+                  <Route  path='/Order List' component={OrderList} />
+                  <Route  path='/Seller List' component={sellerList} />
+                  <Route  path='/Item List' component={ItemList} />
                </Switch>
             </div>
         </Router>
